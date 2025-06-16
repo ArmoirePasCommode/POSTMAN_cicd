@@ -11,7 +11,7 @@ test_api:
     - npm install
   script:
     - node src/app.js &
-    - newman run ./tests/TP.postman_collection.json
+    - newman run ./tests/TP.postman_collection.json --env-var "URL_APP=http://localhost:3000"
 
   only:
     - main
