@@ -1,0 +1,18 @@
+stages:
+  - test
+
+test_api:
+  stage: test
+  image: node:18
+  services:
+    - name: node:18
+  before_script:
+    - npm install -g newman
+    - npm install
+  script:
+    - node src/app.js &
+    - newman run ./tests/TP.postman_collection.json
+
+  only:
+    - main
+    - master
